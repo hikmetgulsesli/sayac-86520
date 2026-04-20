@@ -1,9 +1,6 @@
 import { Counter } from "./components/Counter"
 import { ActionButtons } from "./components/ActionButtons"
 import { HistoryList } from "./components/HistoryList"
-import { Sidebar } from "./components/Sidebar"
-import { MobileHeader } from "./components/MobileHeader"
-import { BottomNav } from "./components/BottomNav"
 import { ThemeToggle } from "./components/ThemeToggle"
 import { useCounter } from "./hooks/useCounter"
 import { useTheme } from "./hooks/useTheme"
@@ -13,15 +10,9 @@ export function App() {
   const { isDark, toggleTheme } = useTheme()
 
   return (
-    <div className="bg-surface text-on-surface min-h-screen flex flex-col md:flex-row overflow-x-hidden">
-      {/* Sidebar - Web */}
-      <Sidebar />
-
-      {/* Mobile Header */}
-      <MobileHeader isDark={isDark} onToggleTheme={toggleTheme} />
-
-      {/* Main Content */}
-      <main className="flex-1 md:ml-72 p-6 md:p-10 lg:p-16 flex flex-col lg:flex-row gap-12 relative z-0 pb-24 md:pb-10">
+    <div className="bg-surface text-on-surface min-h-screen flex flex-col overflow-x-hidden">
+      {/* Main Content - Centered */}
+      <main className="flex-1 p-6 md:p-10 lg:p-16 flex flex-col lg:flex-row gap-12 items-center justify-center relative z-0">
         {/* Counter Section - Left */}
         <section className="flex-1 flex flex-col items-center justify-center min-h-[500px] relative">
           {/* Background Glow */}
@@ -55,11 +46,8 @@ export function App() {
         </section>
       </main>
 
-      {/* Bottom Navigation - Mobile */}
-      <BottomNav />
-
-      {/* Theme Toggle - Desktop in header area */}
-      <div className="hidden md:flex fixed top-6 right-8 z-50">
+      {/* Theme Toggle - Fixed top right */}
+      <div className="fixed top-6 right-8 z-50">
         <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
       </div>
     </div>
