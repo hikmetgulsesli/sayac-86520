@@ -1,0 +1,9 @@
+=== US-003: UI bilesenleri ===
+COMPLETED: 2026-04-20T20:17:00+03:00
+FILES CHANGED: src/App.tsx, src/components/ActionButtons.tsx, src/components/Counter.tsx, src/components/HistoryList.tsx, src/components/HistoryItem.tsx, src/components/ThemeToggle.tsx, src/hooks/useCounter.ts, src/hooks/useTheme.ts, src/index.css
+KEY DECISIONS: 
+- Reused existing component implementations from US-002
+- Fixed node_modules symlink to point to us-002's node_modules (main repo has no package.json)
+- Build passes successfully
+- Story branch already pushed to origin/0022d52c-us-003
+DEPENDENCIES ADDED: none (symlinked node_modules from us-002)
