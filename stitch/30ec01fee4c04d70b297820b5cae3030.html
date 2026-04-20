@@ -1,0 +1,31 @@
+# Ürün Gereksinimleri Dokümanı — Sayac Uygulaması
+
+## 1. Genel Bakış
+Bu proje, kullanıcıların artış, azalış ve sıfırlama işlemleri yapabileceği interaktif bir sayaç uygulamasıdır. Uygulama React 18 + Vite + TypeScript + Tailwind CSS ile geliştirilmektedir. Türkçe arayüz ile son 10 değişiklik geçmişi timestamp ile kaydedilir. Karanlık/açık tema desteği mevcuttur.
+
+## 2. Hedefler
+- Kullanıcının sayacı artırıp azaltarak sayısal değeri kontrol etmesini sağlamak
+- Son 10 değişikliği timestamp ile birlikte geçmiş listesinde göstermek
+- Karanlık ve açık tema arasında geçiş yapabilmek
+- Mobil ve masaüstü cihazlarda sorunsuz çalışmak
+- WCAG 2.1 AA erişilebilirlik standartlarına uymak
+
+## 3. Fonksiyonel Gereksinimler
+- **Sayac Görüntüleme:** Büyük font, 0-999999 aralığı, animasyonlu geçiş.
+- **Artır Butonu:** +1 artış, indigo arka plan.
+- **Azalt Butonu:** -1 azalış, violet arka plan.
+- **Sıfırla Butonu:** Değeri 0 yapar, gri border.
+- **Değişiklik Geçmişi:** Son 10 kayıt, timestamp, eski -> yeni değer.
+- **Dark Mode Toggle:** Sağ üstte, güneş/ay ikonu, localStorage kalıcılığı.
+
+## 4. Design System — Playful (Oyuncu) Estetik
+- **Renkler:** Primary (#6366F1), Secondary (#8B5CF6), BG Dark (#0F172A), Surface Dark (#1E293B).
+- **Tipografi:** Inter (Heading/Body), JetBrains Mono (Numbers).
+- **Icons:** Lucide React.
+- **Spacing/Radius:** 4/8/12/16/24/32/48/64 px scale; lg (12px) radius.
+
+## 5. Ekranlar
+1. **Ana Sayfa:** Sayaç, butonlar, geçmiş, tema toggle.
+2. **Boş Geçmiş Durumu:** İşlem yapılmadığında gösterilen mesaj.
+3. **Sayı Limit Uyarısı:** 999999 limitine ulaşıldığında gösterilen toast.
+4. **Tema Değişikliği Animasyonu:** Karanlık/açık geçiş görselleştirmesi.

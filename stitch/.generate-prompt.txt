@@ -1,0 +1,212 @@
+# Ürün Gereksinimleri Dokümanı — Sayac Uygulaması
+
+## 1. Genel Bakış
+
+Bu proje, kullanıcıların artış, azalış ve sıfırlama işlemleri yapabileceği interaktif bir sayaç uygulamasıdır. Uygulama React 18 + Vite + TypeScript + Tailwind CSS ile geliştirilmektedir. Türkçe arayüz ile son 10 değişiklik geçmişi timestamp ile kaydedilir. Karanlık/açık tema desteği mevcuttur. Hedef kitle: günlük kullanım yapan bireysel kullanıcılar, öğrenciler ve profesyoneller.
+
+## 2. Hedefler
+
+- Kullanıcının sayacı artırıp azaltarak sayısal değeri kontrol etmesini sağlamak
+- Son 10 değişikliği timestamp ile birlikte geçmiş listesinde göstermek
+- Karanlık ve açık tema arasında geçiş yapabilmek
+- Mobil ve masaüstü cihazlarda sorunsuz çalışmak
+- 2 saniyeden kısa ilk yükleme süresi sağlamak
+- WCAG 2.1 AA erişilebilirlik standartlarına uymak
+
+## 3. Tech Stack Detayı
+
+- **Framework:** React 18.3.1 (function component + hooks)
+- **Build:** Vite 5.x (hızlı geliştirme ve üretim build)
+- **Styling:** Tailwind CSS 3.x (custom theme ile)
+- **State:** React useState + useReducer (local state, üstten aktarım)
+- **Storage:** localStorage (geçmiş verisi kalıcılığı için)
+- **Routing:** Yok (tek sayfa uygulaması)
+- **Language:** TypeScript 5.x (strict mode)
+
+## 4. Fonksiyonel Gereksinimler
+
+### 4.1 Sayac Görüntüleme
+- Mevcut sayaç değeri ekranın ortasında büyük font ile gösterilir
+- Sayısal değer 0-999999 arasında sınırlıdır
+- Negatif değerler desteklenir
+- Değer değiştiğinde animasyonlu geçiş uygulanır
+
+### 4.2 Artır Butonu
+- Label: "Artır"
+- Her tıklamada sayaç değeri +1 artar
+- Ardışık tıklamalar arası minimum gecikme yok (hızlı tıklama desteklenir)
+- Başarı durumu: sayaç güncellenir, geçmişe eklenir
+
+### 4.3 Azalt Butonu
+- Label: "Azalt"
+- Her tıklamada sayaç değeri -1 azalır
+- Mevcut değer 0 ise negatif değere geçer
+- Başarı durumu: sayaç güncellenir, geçmişe eklenir
+
+### 4.4 Sıfırla Butonu
+- Label: "Sıfırla"
+- Sayaç değerini 0'a ayarlar
+- Onay gerektirmez (hızlı işlem)
+- Başarı durumu: sayaç 0 olur, geçmişe "Sıfırlandı" olarak eklenir
+
+### 4.5 Değişiklik Geçmişi
+- Son 10 değişiklik listelenir (en yenisi üstte)
+- Her kayıt şunları içerir:
+  - İşlem tipi: "Arttırıldı (+N)", "Azaltıldı (-N)", "Sıfırlandı"
+  - Timestamp: GG.AA.YYYY SS:DD:SN formatında
+  - Önceki değer → Yeni değer
+- localStorage'da saklanır, sayfa yenilendiğinde korunur
+- Boş durumda: "Henüz işlem yapılmadı" mesajı gösterilir
+
+### 4.6 Dark Mode Toggle
+- Toggle butonu sağ üst köşede
+- İkon: güneş (açık tema) / ay (karanlık tema)
+- Seçim localStorage'da saklanır
+- Sistem tercihine göre başlangıç teması belirlenir (prefers-color-scheme)
+- Geçiş animasyonlu olur (300ms fade)
+
+## 5. Veri Modeli
+
+### HistoryEntry
+```typescript
+interface HistoryEntry {
+  id: string;          // UUID
+  type: 'increment' | 'decrement' | 'reset';
+  previousValue: number;
+  newValue: number;
+  timestamp: string;   // ISO 8601 formatında
+}
+```
+
+### AppState (localStorage key: "sayac-state")
+```typescript
+interface AppState {
+  count: number;
+  history: HistoryEntry[];
+  theme: 'light' | 'dark' | 'system';
+}
+```
+
+## 6. UI/UX Gereksinimleri
+
+### 6.1 Design System — Playful (Oyuncu) Estetik
+
+**Renk Paleti:**
+- Primary: #6366F1 (Indigo)
+- Secondary: #8B5CF6 (Violet)
+- Background Light: #F8FAFC
+- Background Dark: #0F172A
+- Surface Light: #FFFFFF
+- Surface Dark: #1E293B
+- Text Light: #1E293B
+- Text Dark: #F1F5F9
+- Border Light: #E2E8F0
+- Border Dark: #334155
+- Success: #22C55E
+- Error: #EF4444
+- Warning: #F59E0B
+
+**Tipografi:**
+- Heading Font: Inter (700 weight)
+- Body Font: Inter (400, 500 weight)
+- Monospace (sayı): JetBrains Mono
+
+**Icon Library:** Lucide React (Counter, Plus, Minus, RotateCcw, Sun, Moon)
+
+### 6.2 Spacing & Components
+
+**Spacing Scale:** 4/8/12/16/24/32/48/64 px
+**Border Radius:** sm=4px, md=8px, lg=12px, xl=16px, full=9999px
+**Shadow:** sm=0 1px 2px rgba(0,0,0,0.05), md=0 4px 6px rgba(0,0,0,0.1), lg=0 10px 15px rgba(0,0,0,0.1)
+
+**Buton Pattern:**
+- Artır: Indigo arka plan, beyaz metin, hover'da scale(1.05)
+- Azalt: Violet arka plan, beyaz metin, hover'da scale(1.05)
+- Sıfırla: Transparent, gri border, hover'da kırmızı tint
+
+**Kart Pattern:**
+- Beyaz arka plan, md shadow, lg border-radius
+- Padding: 24px
+- İçerik: ortalanmış
+
+### 7. Non-Functional Requirements
+
+### 7.1 Performans
+- İlk yükleme (LCP): < 1.5 saniye
+- Sayfa geçişi: yok (SPA)
+- Bundle size hedefi: < 100KB gzipped
+- TTI (Time to Interactive): < 2 saniye
+
+### 7.2 Erişilebilirlik (WCAG 2.1 AA)
+- Tüm butonlar keyboard navigable (Tab, Enter, Space)
+- ARIA labels tüm interactive elementlerde
+- Focus ring visible (outline-offset: 2px, primary color)
+- Kontrast oranı: metin >= 4.5:1, büyük metin >= 3:1
+- Touch hedefleri: minimum 44x44px
+- Screen reader dostu: sırasıyla sayı ve butonlar okunur
+
+### 7.3 Tarayıcı Desteği
+- Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
+- iOS Safari 14+, Android Chrome 90+
+- Responsive: 320px (mobil) → 1920px (desktop)
+
+## 8. Proje Yapısı
+
+```
+src/
+├── components/
+│   ├── Counter.tsx           # Sayaç değeri gösterimi
+│   ├── ActionButtons.tsx     # Artır/Azalt/Sıfırla butonları
+│   ├── HistoryList.tsx       # Geçmiş liste bileşeni
+│   ├── ThemeToggle.tsx        # Dark mode toggle
+│   └── HistoryItem.tsx       # Geçmiş kayıt bileşeni
+├── hooks/
+│   ├── useCounter.ts          # Sayac state ve işlemleri
+│   ├── useHistory.ts          # Geçmiş yönetimi
+│   └── useTheme.ts            # Tema yönetimi
+├── utils/
+│   └── time.ts                # Timestamp formatting
+├── types/
+│   └── index.ts               # TypeScript arayüzleri
+├── App.tsx                    # Ana uygulama bileşeni
+├── main.tsx                   # Vite entry point
+└── index.css                  # Tailwind importları
+```
+
+## 9. Window State
+
+```typescript
+window.app = {
+  state: 'idle' | 'updating' | 'error',
+  count: number,
+  historyLength: number,
+  theme: 'light' | 'dark'
+}
+```
+
+## 10. Ekranlar
+
+| # | Ekran Adı | Tür | Açıklama |
+|---|-----------|-----|----------|
+| 1 | Ana Sayfa | main | Sayaç değeri, artır/azalt/sıfırla butonları, geçmiş liste, tema toggle |
+| 2 | Boş Geçmiş Durumu | empty-state | Hiç işlem yapılmadığında gösterilen mesaj |
+| 3 | Sayı Limit Uyarısı | toast | Sayaç 999999'a ulaştığında gösterilen uyarı |
+| 4 | Tema Değişikliği Animasyonu | transition | Karanlık/açık geçişinde fades efekti |
+
+## 11. Edge Cases
+
+- Sayaç 999999 iken artır butonu tıklandığında: uyarı göster, değer sabit kalır
+- Geçmiş 10 kayıttan fazlaysa: en eski silinir, yenisi eklenir
+- localStorage doluysa: eski geçmiş silinir, yeni kayıt eklenir
+- Tema "system" iken sistem rengi değişirse: otomatik güncellenir
+
+Generate a SEPARATE screen design for EVERY page, view, modal, dialog, tab panel, and settings screen described in this PRD. Do NOT skip ANY screen — even if it seems minor.
+
+MANDATORY SCREENS:
+- If the PRD mentions "settings" or "ayarlar" → generate a Settings screen
+- If the PRD mentions tabs or bottom navigation → generate EACH tab view as a separate screen
+- If the PRD mentions modals (statistics, help, share, confirmation) → generate each as a separate screen
+- If the PRD mentions error states, empty states, loading states → generate those too
+- Generate at least as many screens as there are distinct views/pages/modals in the PRD
+
+All visible text must be in Turkish. Use a dark, modern theme.

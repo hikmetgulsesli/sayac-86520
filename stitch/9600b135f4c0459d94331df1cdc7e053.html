@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Neonist - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary": "#ffb783",
+                      "on-error": "#690005",
+                      "on-surface": "#dae2fd",
+                      "surface-variant": "#2d3449",
+                      "inverse-on-surface": "#283044",
+                      "surface-container-high": "#222a3d",
+                      "surface-container-low": "#131b2e",
+                      "on-primary-fixed": "#07006c",
+                      "on-secondary": "#3c0091",
+                      "on-primary-container": "#0d0096",
+                      "surface-container": "#171f33",
+                      "on-background": "#dae2fd",
+                      "error-container": "#93000a",
+                      "tertiary-container": "#d97721",
+                      "primary-container": "#8083ff",
+                      "surface-bright": "#31394d",
+                      "on-primary-fixed-variant": "#2f2ebe",
+                      "primary-fixed-dim": "#c0c1ff",
+                      "secondary": "#d0bcff",
+                      "on-tertiary-fixed-variant": "#703700",
+                      "outline-variant": "#464554",
+                      "on-secondary-fixed-variant": "#5516be",
+                      "surface-dim": "#0b1326",
+                      "on-secondary-fixed": "#23005c",
+                      "secondary-fixed-dim": "#d0bcff",
+                      "primary-fixed": "#e1e0ff",
+                      "surface": "#0b1326",
+                      "background": "#0b1326",
+                      "tertiary-fixed-dim": "#ffb783",
+                      "on-surface-variant": "#c7c4d7",
+                      "on-error-container": "#ffdad6",
+                      "surface-container-lowest": "#060e20",
+                      "primary": "#c0c1ff",
+                      "error": "#ffb4ab",
+                      "surface-container-highest": "#2d3449",
+                      "on-secondary-container": "#c4abff",
+                      "tertiary-fixed": "#ffdcc5",
+                      "on-tertiary-fixed": "#301400",
+                      "outline": "#908fa0",
+                      "secondary-container": "#571bc1",
+                      "inverse-surface": "#dae2fd",
+                      "on-tertiary-container": "#452000",
+                      "on-primary": "#1000a9",
+                      "surface-tint": "#c0c1ff",
+                      "secondary-fixed": "#e9ddff",
+                      "inverse-primary": "#494bd6",
+                      "on-tertiary": "#4f2500"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Space Grotesk", "sans-serif"],
+                      "body": ["Inter", "sans-serif"],
+                      "label": ["Inter", "sans-serif"],
+                      "mono": ["JetBrains Mono", "monospace"]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        
+        .glass-panel {
+            background-color: rgba(45, 52, 73, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        
+        .ambient-shadow {
+            box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .ghost-border {
+            border: 1px solid rgba(192, 193, 255, 0.15); /* primary at 15% */
+        }
+        
+        .primary-glow {
+            background: linear-gradient(135deg, #c0c1ff, #8083ff);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface h-screen flex overflow-hidden">
+<!-- SideNavBar (Hidden on Mobile) -->
+<nav class="hidden md:flex h-screen w-72 fixed left-0 top-0 z-40 flex-col gap-4 py-8 h-full bg-[#131b2e] dark:bg-[#131b2e] shadow-[20px_0px_40px_rgba(0,0,0,0.4)]">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary-container flex items-center justify-center text-on-primary font-headline font-bold text-xl">
+                N
+            </div>
+<div>
+<h2 class="font-headline font-bold text-xl text-primary tracking-tight">Neonist</h2>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-2">
+<!-- Active Tab: Dashboard -->
+<a class="bg-gradient-to-r from-indigo-500 to-violet-600 text-white rounded-r-full py-3 px-6 shadow-lg shadow-indigo-500/20 flex items-center gap-3 font-['Space_Grotesk'] uppercase tracking-widest text-xs font-bold scale-105 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">speed</span>
+                Dashboard
+            </a>
+<a class="text-slate-400 py-3 px-6 hover:text-indigo-300 hover:bg-[#2d3449] transition-all duration-200 flex items-center gap-3 font-['Space_Grotesk'] uppercase tracking-widest text-xs font-bold" href="#">
+<span class="material-symbols-outlined">analytics</span>
+                Statistics
+            </a>
+<a class="text-slate-400 py-3 px-6 hover:text-indigo-300 hover:bg-[#2d3449] transition-all duration-200 flex items-center gap-3 font-['Space_Grotesk'] uppercase tracking-widest text-xs font-bold" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+</div>
+<div class="px-6 mt-auto">
+<div class="p-4 rounded-xl bg-surface-container-highest ghost-border flex items-center gap-3">
+<img alt="User Profile" class="w-10 h-10 rounded-full object-cover" data-alt="Portrait of a young woman with warm lighting and a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDywLuBUKJdyjIu2Mi85PFFl7vHoE6kIZIleWMwx7RlOOSNQulhHnUtCVCsI3CYwEoQK5gUp5wq1N-552vAmIpvXAZqztKym4z4zcvPDFfD7BW-82xTm8wAjl4j_gYDopI87dZyRu_RlJ-TMD9bpCoRLxcpQGfZi7GJoQQEoXx7MggDdsW2xCH8aa1RjePfE3TN4aR1zOFBo9ZtJGuwV87Kq2z38Ksoj-S0w3zPSQ4VDBNQ6EHdwvBofJe8weZv-asRk--wKi74a3Y"/>
+<div>
+<p class="font-headline font-bold text-sm text-on-surface">Alex Mercer</p>
+<p class="text-xs text-on-surface-variant font-body">Pro Plan</p>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col md:ml-72 relative h-full overflow-y-auto">
+<!-- TopAppBar (Mobile Only or Minimal on Web) -->
+<header class="md:hidden flex justify-between items-center w-full px-6 py-4 max-w-full docked full-width top-0 sticky z-50 bg-[#0b1326] dark:bg-[#0b1326] shadow-none">
+<div class="text-2xl font-black text-indigo-400 font-['Space_Grotesk'] tracking-tighter">Neonist</div>
+<button class="text-slate-400 hover:text-indigo-200 hover:bg-indigo-500/10 transition-colors duration-300 p-2 rounded-full">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+</header>
+<div class="hidden md:flex justify-end items-center w-full px-8 py-6 max-w-full sticky top-0 z-30 bg-surface/80 backdrop-blur-md">
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-300 p-2 rounded-full bg-surface-container-highest ghost-border">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+</div>
+<!-- Dashboard Content -->
+<div class="p-6 md:p-10 flex-1 flex flex-col gap-8">
+<!-- Header -->
+<div>
+<h1 class="font-headline text-4xl md:text-5xl font-bold text-on-surface tracking-tight mb-2">Güncel Durum</h1>
+<p class="text-on-surface-variant font-body text-lg">Hoş geldin, Alex. İşte bugünkü etkileşimlerin.</p>
+</div>
+<!-- Hero Counter (Bento style) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Main Counter Card -->
+<div class="lg:col-span-2 bg-surface-container-low rounded-xl p-8 relative overflow-hidden flex flex-col justify-center items-center min-h-[400px]">
+<!-- Ambient Glow -->
+<div class="absolute w-64 h-64 bg-secondary-container rounded-full blur-[80px] opacity-40 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+<h2 class="font-headline text-xl text-primary font-bold tracking-widest uppercase mb-8 z-10">Toplam Tıklama</h2>
+<div class="font-mono text-8xl md:text-9xl font-bold text-on-surface z-10 mb-12 tracking-tighter">
+                        4,892
+                    </div>
+<div class="flex gap-6 z-10 w-full max-w-md">
+<button class="flex-1 h-16 rounded-full bg-surface-container-highest text-on-surface-variant ghost-border hover:text-on-surface transition-colors font-headline font-bold text-lg flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">remove</span>
+                            Azalt
+                        </button>
+<button class="flex-1 h-16 rounded-full primary-glow text-on-primary font-headline font-bold text-xl flex items-center justify-center gap-2 ambient-shadow transform hover:scale-[1.02] transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+                            Artır
+                        </button>
+</div>
+</div>
+<!-- Side Stats -->
+<div class="flex flex-col gap-6">
+<div class="bg-surface-container rounded-xl p-6 flex-1 flex flex-col justify-between">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-headline text-on-surface-variant font-bold uppercase tracking-wider text-sm">Haftalık Hedef</h3>
+<span class="material-symbols-outlined text-primary">flag</span>
+</div>
+<div>
+<div class="font-mono text-4xl font-bold text-on-surface mb-2">68%</div>
+<div class="w-full bg-surface-container-highest rounded-full h-2 mb-2 overflow-hidden">
+<div class="bg-primary h-2 rounded-full" style="width: 68%"></div>
+</div>
+<p class="text-xs text-on-surface-variant font-body">10,000 hedefine 3,108 kaldı.</p>
+</div>
+</div>
+<div class="bg-surface-container-high rounded-xl p-6 flex-1 flex flex-col justify-between ghost-border relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-tertiary-container rounded-full blur-[50px] opacity-20 -mr-10 -mt-10 pointer-events-none"></div>
+<div class="flex items-center justify-between mb-4 z-10">
+<h3 class="font-headline text-on-surface-variant font-bold uppercase tracking-wider text-sm">Zirve Hızı</h3>
+<span class="material-symbols-outlined text-tertiary">bolt</span>
+</div>
+<div class="z-10">
+<div class="font-mono text-4xl font-bold text-on-surface mb-1 flex items-baseline gap-2">
+                                42 <span class="text-sm font-body text-on-surface-variant font-normal">tık/dk</span>
+</div>
+<p class="text-xs text-on-surface-variant font-body mt-2">Bugün 14:30'da kaydedildi.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Activity List (No lines) -->
+<div class="bg-surface-container-lowest rounded-xl p-8 mt-4">
+<h2 class="font-headline text-xl text-on-surface font-bold tracking-tight mb-6">Son İşlemler</h2>
+<div class="flex flex-col gap-6">
+<!-- Item 1 -->
+<div class="flex items-center justify-between p-4 bg-surface-container rounded-lg">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-sm">add</span>
+</div>
+<div>
+<p class="font-headline font-bold text-on-surface">Manuel Artış</p>
+<p class="text-sm text-on-surface-variant font-body">Bugün, 15:42</p>
+</div>
+</div>
+<div class="font-mono font-bold text-primary">+100</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center justify-between p-4 bg-surface rounded-lg">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">sync</span>
+</div>
+<div>
+<p class="font-headline font-bold text-on-surface">Otomatik Senkronizasyon</p>
+<p class="text-sm text-on-surface-variant font-body">Bugün, 14:00</p>
+</div>
+</div>
+<div class="font-mono font-bold text-on-surface-variant">0</div>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center justify-between p-4 bg-surface-container rounded-lg">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-sm">remove</span>
+</div>
+<div>
+<p class="font-headline font-bold text-on-surface">Hata Düzeltme</p>
+<p class="text-sm text-on-surface-variant font-body">Dün, 09:15</p>
+</div>
+</div>
+<div class="font-mono font-bold text-error">-12</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Nav (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full bg-surface-container-low border-t-0 shadow-[0px_-10px_30px_rgba(0,0,0,0.5)] z-50 px-6 py-4 flex justify-between items-center">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">speed</span>
+<span class="text-[10px] font-headline font-bold">Panel</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-[10px] font-headline font-bold">İstatistik</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-headline font-bold">Ayarlar</span>
+</a>
+</nav>
+</body></html>

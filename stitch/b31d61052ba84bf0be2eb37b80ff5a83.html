@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ana Sayfa - Neonist</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&amp;family=JetBrains+Mono:wght@400;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary": "#ffb783",
+                      "on-error": "#690005",
+                      "on-surface": "#dae2fd",
+                      "surface-variant": "#2d3449",
+                      "inverse-on-surface": "#283044",
+                      "surface-container-high": "#222a3d",
+                      "surface-container-low": "#131b2e",
+                      "on-primary-fixed": "#07006c",
+                      "on-secondary": "#3c0091",
+                      "on-primary-container": "#0d0096",
+                      "surface-container": "#171f33",
+                      "on-background": "#dae2fd",
+                      "error-container": "#93000a",
+                      "tertiary-container": "#d97721",
+                      "primary-container": "#8083ff",
+                      "surface-bright": "#31394d",
+                      "on-primary-fixed-variant": "#2f2ebe",
+                      "primary-fixed-dim": "#c0c1ff",
+                      "secondary": "#d0bcff",
+                      "on-tertiary-fixed-variant": "#703700",
+                      "outline-variant": "#464554",
+                      "on-secondary-fixed-variant": "#5516be",
+                      "surface-dim": "#0b1326",
+                      "on-secondary-fixed": "#23005c",
+                      "secondary-fixed-dim": "#d0bcff",
+                      "primary-fixed": "#e1e0ff",
+                      "surface": "#0b1326",
+                      "background": "#0b1326",
+                      "tertiary-fixed-dim": "#ffb783",
+                      "on-surface-variant": "#c7c4d7",
+                      "on-error-container": "#ffdad6",
+                      "surface-container-lowest": "#060e20",
+                      "primary": "#c0c1ff",
+                      "error": "#ffb4ab",
+                      "surface-container-highest": "#2d3449",
+                      "on-secondary-container": "#c4abff",
+                      "tertiary-fixed": "#ffdcc5",
+                      "on-tertiary-fixed": "#301400",
+                      "outline": "#908fa0",
+                      "secondary-container": "#571bc1",
+                      "inverse-surface": "#dae2fd",
+                      "on-tertiary-container": "#452000",
+                      "on-primary": "#1000a9",
+                      "surface-tint": "#c0c1ff",
+                      "secondary-fixed": "#e9ddff",
+                      "inverse-primary": "#494bd6",
+                      "on-tertiary": "#4f2500"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {},
+              "fontFamily": {
+                      "headline": ["Space Grotesk"],
+                      "body": ["Inter"],
+                      "label": ["Inter"],
+                      "mono": ["JetBrains Mono"]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-headline { font-family: 'Space Grotesk', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .glass-panel {
+            background: rgba(45, 52, 73, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col md:flex-row overflow-x-hidden">
+<!-- SideNavBar (md and up) -->
+<nav class="hidden md:flex h-screen w-72 fixed left-0 top-0 z-40 bg-[#131b2e] dark:bg-[#131b2e] bg-[#0b1326] shadow-2xl shadow-[20px_0px_40px_rgba(0,0,0,0.4)] flex-col gap-4 py-8">
+<div class="px-6 mb-8">
+<h1 class="text-2xl font-black text-indigo-400 font-['Space_Grotesk'] tracking-tighter">Neonist</h1>
+</div>
+<div class="flex-1 flex flex-col gap-2">
+<!-- Active Tab: Dashboard (Semantic match for "Ana Sayfa" / Main Dashboard) -->
+<a class="bg-gradient-to-r from-indigo-500 to-violet-600 text-white rounded-r-full py-3 px-6 shadow-lg shadow-indigo-500/20 flex items-center gap-4 font-['Space_Grotesk'] uppercase tracking-widest text-xs font-bold scale-105 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">speed</span>
+<span>Dashboard</span>
+</a>
+<a class="text-slate-400 py-3 px-6 hover:text-indigo-300 flex items-center gap-4 font-['Space_Grotesk'] uppercase tracking-widest text-xs font-bold hover:bg-[#2d3449] transition-all duration-200" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span>Statistics</span>
+</a>
+<a class="text-slate-400 py-3 px-6 hover:text-indigo-300 flex items-center gap-4 font-['Space_Grotesk'] uppercase tracking-widest text-xs font-bold hover:bg-[#2d3449] transition-all duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</div>
+<div class="px-6 mt-auto">
+<div class="flex items-center gap-3 py-4 border-t border-outline-variant/15">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="Portrait of a young person with soft studio lighting against a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsw4Gr5qrXD_Tufr-q9qLGavTSLHEZ8whKvQ7337If9Z_nxfUfsdkp2P4z4c62tk7yn7c-Yspo3uJYwofmyOjcSlBfIVqMozryWIuFFBpQCYTP6CnvVazArk1Am5W2Ky-mQKhmEXwL92rSITXDKA3T9y35TIeUcz2OgpQVcd-3G9sodQrqn39zBqFF6XY6D-7wPrMyzw40E3cVVmrExi-ZV1EfFhvkyEV6uPSQd4Kz9MoHEi_Sv5YBCD4YiWpX5tc0PWeuOLhWDE0"/>
+</div>
+<div>
+<p class="font-headline text-sm font-bold text-on-surface">History</p>
+<p class="text-xs text-on-surface-variant">Recent Activity</p>
+</div>
+</div>
+</div>
+</nav>
+<!-- TopAppBar (Mobile) -->
+<header class="md:hidden docked full-width top-0 sticky z-50 bg-[#0b1326] dark:bg-[#0b1326] bg-[#131b2e] flat no shadows flex justify-between items-center w-full px-6 py-4 max-w-full">
+<h1 class="text-2xl font-black text-indigo-400 font-['Space_Grotesk'] tracking-tighter">Neonist</h1>
+<button class="text-indigo-500 dark:text-indigo-400 hover:bg-indigo-500/10 transition-colors duration-300 p-2 rounded-full Active: scale-95 duration-150">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-72 p-6 md:p-12 lg:p-16 flex flex-col lg:flex-row gap-12 relative z-0">
+<!-- Counter Section (Hero) -->
+<section class="flex-1 flex flex-col items-center justify-center min-h-[614px] relative">
+<!-- Asymmetrical Background Glow -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none z-[-1]">
+<div class="w-64 h-64 md:w-96 md:h-96 bg-secondary-container rounded-full blur-[100px] opacity-40 translate-x-8 translate-y-8"></div>
+<div class="w-48 h-48 md:w-72 md:h-72 bg-primary-container rounded-full blur-[80px] opacity-20 -translate-x-12 -translate-y-12"></div>
+</div>
+<div class="text-center z-10 flex flex-col items-center">
+<h2 class="font-headline text-2xl md:text-3xl text-on-surface-variant mb-4 font-bold tracking-tight">Güncel Sayaç</h2>
+<div class="font-mono text-7xl md:text-9xl font-bold text-on-surface mb-12 tabular-nums tracking-tighter">
+                    1,234
+                </div>
+<!-- Action Buttons -->
+<div class="flex flex-col sm:flex-row gap-6 items-center">
+<button class="h-16 px-10 rounded-full bg-gradient-to-br from-primary to-primary-container text-on-primary font-headline font-bold text-lg shadow-[0px_20px_40px_rgba(0,0,0,0.4)] hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-3">
+<span class="material-symbols-outlined font-bold">add</span>
+                        Artır
+                    </button>
+<button class="h-16 px-10 rounded-full glass-panel text-on-surface font-headline font-bold text-lg hover:bg-surface-variant transition-all duration-300 flex items-center gap-3 outline outline-2 outline-outline-variant/15 hover:outline-primary/40 shadow-[0px_10px_30px_rgba(0,0,0,0.3)]">
+<span class="material-symbols-outlined">remove</span>
+                        Azalt
+                    </button>
+</div>
+<button class="mt-8 px-6 py-2 rounded-full border-2 border-outline-variant/20 text-on-surface-variant hover:text-error hover:border-error/50 font-body text-sm font-medium transition-all duration-200">
+                    Sıfırla
+                </button>
+</div>
+</section>
+<!-- History Sidebar (Right Side) -->
+<aside class="w-full lg:w-96 flex flex-col gap-6 relative z-10">
+<div class="bg-surface-container-low rounded-xl p-6 lg:p-8 flex-1 h-full shadow-[0px_20px_40px_rgba(0,0,0,0.2)]">
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-headline text-xl font-bold text-on-surface tracking-tight">Değişiklik Geçmişi</h3>
+<span class="material-symbols-outlined text-primary">history</span>
+</div>
+<div class="flex flex-col gap-4">
+<!-- History Item 1 -->
+<div class="bg-surface-container rounded-lg p-4 flex flex-col gap-2 relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-success opacity-50"></div>
+<div class="flex items-center justify-between">
+<span class="font-body font-semibold text-on-surface flex items-center gap-2">
+                                Arttırıldı <span class="text-success text-sm">(+1)</span>
+</span>
+<span class="font-mono text-xs text-on-surface-variant">12.05.2024</span>
+</div>
+<div class="font-mono text-xs text-on-surface-variant opacity-70">
+                            14:30:05
+                        </div>
+</div>
+<!-- History Item 2 -->
+<div class="bg-surface-container rounded-lg p-4 flex flex-col gap-2 relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-success opacity-50"></div>
+<div class="flex items-center justify-between">
+<span class="font-body font-semibold text-on-surface flex items-center gap-2">
+                                Arttırıldı <span class="text-success text-sm">(+1)</span>
+</span>
+<span class="font-mono text-xs text-on-surface-variant">12.05.2024</span>
+</div>
+<div class="font-mono text-xs text-on-surface-variant opacity-70">
+                            14:28:12
+                        </div>
+</div>
+<!-- History Item 3 -->
+<div class="bg-surface-container rounded-lg p-4 flex flex-col gap-2 relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-tertiary-container opacity-50"></div>
+<div class="flex items-center justify-between">
+<span class="font-body font-semibold text-on-surface flex items-center gap-2">
+                                Azaltıldı <span class="text-tertiary text-sm">(-1)</span>
+</span>
+<span class="font-mono text-xs text-on-surface-variant">12.05.2024</span>
+</div>
+<div class="font-mono text-xs text-on-surface-variant opacity-70">
+                            14:25:00
+                        </div>
+</div>
+<!-- History Item 4 -->
+<div class="bg-surface-container rounded-lg p-4 flex flex-col gap-2 relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-success opacity-50"></div>
+<div class="flex items-center justify-between">
+<span class="font-body font-semibold text-on-surface flex items-center gap-2">
+                                Arttırıldı <span class="text-success text-sm">(+1)</span>
+</span>
+<span class="font-mono text-xs text-on-surface-variant">12.05.2024</span>
+</div>
+<div class="font-mono text-xs text-on-surface-variant opacity-70">
+                            14:20:44
+                        </div>
+</div>
+<!-- History Item Reset -->
+<div class="bg-surface-container-lowest rounded-lg p-4 flex flex-col gap-2 relative overflow-hidden outline outline-1 outline-error/20">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error opacity-50"></div>
+<div class="flex items-center justify-between">
+<span class="font-body font-semibold text-on-surface flex items-center gap-2">
+                                Sıfırlandı <span class="text-error text-sm">(0)</span>
+</span>
+<span class="font-mono text-xs text-on-surface-variant">12.05.2024</span>
+</div>
+<div class="font-mono text-xs text-on-surface-variant opacity-70">
+                            10:00:00
+                        </div>
+</div>
+</div>
+<button class="w-full mt-6 py-3 font-body text-sm font-medium text-primary hover:text-primary-fixed-dim transition-colors duration-200">
+                    Tüm Geçmişi Gör
+                </button>
+</div>
+</aside>
+</main>
+<!-- BottomNavBar (Mobile Only - Simplified for this context) -->
+<nav class="md:hidden fixed bottom-0 w-full bg-surface-container-low border-t-0 py-3 px-6 flex justify-around z-50 glass-panel">
+<a class="flex flex-col items-center gap-1 text-primary font-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">speed</span>
+<span class="text-[10px] uppercase tracking-wider font-headline">Dashboard</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary-container" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-[10px] uppercase tracking-wider font-headline">Stats</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary-container" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] uppercase tracking-wider font-headline">Settings</span>
+</a>
+</nav>
+</body></html>
