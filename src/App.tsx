@@ -2,7 +2,6 @@ import { Counter } from "./components/Counter"
 import { ActionButtons } from "./components/ActionButtons"
 import { HistoryList } from "./components/HistoryList"
 import { ThemeToggle } from "./components/ThemeToggle"
-import { MaxLimitWarning } from "./components/MaxLimitWarning"
 import { useCounter } from "./hooks/useCounter"
 import { useTheme } from "./hooks/useTheme"
 
@@ -13,7 +12,18 @@ export function App() {
   return (
     <div className="bg-surface text-on-surface min-h-screen flex flex-col overflow-x-hidden">
       {/* Max Limit Warning Toast */}
-      {isAtMax && <MaxLimitWarning />}
+      {isAtMax && (
+        <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-md px-4">
+          <div className="bg-error-container/20 backdrop-blur-[20px] rounded-lg p-4 flex items-center gap-3 shadow-[0px_20px_40px_rgba(0,0,0,0.4)] ring-1 ring-error/30">
+            <span className="material-symbols-outlined text-error" style={{ fontVariationSettings: "'FILL' 1" }}>
+              warning
+            </span>
+            <p className="text-error font-body font-medium text-sm">
+              Maksimum sayı limitine ulaşıldı! (999,999)
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* Main Content - Centered */}
       <main className="flex-1 p-6 md:p-10 lg:p-16 flex flex-col lg:flex-row gap-12 items-center justify-center relative z-0">
